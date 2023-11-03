@@ -1,8 +1,18 @@
-# MyMovieflix
-is project based on Nomadcoder's flutter 2 weeks challenge.
+=======
+# mymovieflix
 
-api lists
-Popular movies : https://movies-api.nomadcoders.workers.dev/popular
-Now in cinemas : https://movies-api.nomadcoders.workers.dev/now-playing
-Coming soon : https://movies-api.nomadcoders.workers.dev/coming-soon
-detail information : https://movies-api.nomadcoders.workers.dev/movie?id=502356 
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+>>>>>>> 5960933 (commit 1)
