@@ -12,12 +12,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        centerTitle: true,
+        title: const Text(
+          "MyMovieFlix",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Flexible(
-              flex: 1,
+            Hero(
+              tag: id,
               child: Container(
                 alignment: Alignment.centerLeft,
                 child: const Text(
@@ -26,15 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            Flexible(
-              flex: 1,
+            Hero(
+              tag: id,
               child: Container(
                 alignment: Alignment.centerLeft,
                 child: const Text('poster 들어갈 자리'),
               ),
             ),
-            Flexible(
-              flex: 1,
+            Hero(
+              tag: id,
               child: Container(
                 alignment: Alignment.centerLeft,
                 child: const Text(
