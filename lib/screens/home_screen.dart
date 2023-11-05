@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mymovieflix/models/movie_model.dart';
+import 'package:mymovieflix/services/api_service.dart';
+import 'package:mymovieflix/widgets/movie_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  final Future<List<MovieModel>> movies = ApiService.getPoularMovies();
 
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,63 +22,40 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Hero(
-              tag: id,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'Popular Movies',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      body: FutureBuilder(
+        future: movies,
+        builder: ((context, snapshot) {
+          if (snapshot.hasData) {
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 30,
                 ),
-              ),
-            ),
-            Hero(
-              tag: id,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text('poster 들어갈 자리'),
-              ),
-            ),
-            Hero(
-              tag: id,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'Showing in Cinemas',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text('poster 들어갈 자리'),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'To be continued..',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: const Text('poster 들어갈 자리'),
-              ),
-            ),
-          ],
-        ),
+                Expanded(
+                  child: makeList(snapshot),
+                )
+              ],
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }),
+      ),
+    );
+  }
+
+  ListView makeList(AsyncSnapshot<List<MovieModel>> snapshot) {
+    return ListView.separated(
+      scrollDirection: Axis.vertical,
+      itemCount: snapshot.data!.length,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      itemBuilder: (context, index) {
+        var movie = snapshot.data![index];
+        return Movie(thumb: movie.thumb, title: movie.title, id: movie.id);
+      },
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 20,
       ),
     );
   }
