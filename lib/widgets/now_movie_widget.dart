@@ -3,8 +3,8 @@ import 'package:mymovieflix/models/movie_model.dart';
 import 'package:mymovieflix/screens/home_screen.dart';
 import 'package:mymovieflix/services/api_service.dart';
 
-class PopularMovie extends StatelessWidget {
-  PopularMovie({super.key});
+class NowMovie extends StatelessWidget {
+  NowMovie({super.key});
 
   Future<List<MovieModel>> popularMovies = ApiService.getPoularMovies();
 
@@ -19,7 +19,7 @@ class PopularMovie extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(10),
             child: Text(
-              "무플릭스 인기 영화",
+              "지금 상영 중인 영화",
               style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,

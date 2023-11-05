@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymovieflix/widgets/now_movie_widget.dart';
 
 import 'package:mymovieflix/widgets/popular_movie_widget.dart';
 
@@ -8,20 +9,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        centerTitle: true,
+        backgroundColor: Colors.black,
+        foregroundColor: const Color.fromARGB(255, 202, 13, 0),
         title: const Text(
-          "MovieFlix",
+          "MOVIEFLIX🎬",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView(children: [
-        PopularMovie(),
-      ]),
+      body: ListView(
+        children: [
+          PopularMovie(),
+          NowMovie(),
+        ],
+      ),
     );
   }
 }

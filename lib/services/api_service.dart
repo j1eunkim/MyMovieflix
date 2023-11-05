@@ -6,6 +6,7 @@ import 'package:mymovieflix/models/movie_model.dart';
 class ApiService {
   static const String baseUrl = "https://movies-api.nomadcoders.workers.dev";
   static const String popular = "popular";
+  static const String now = "now-playing";
 
   static Future<List<MovieModel>> getPoularMovies() async {
     List<MovieModel> movieInstance = [];
@@ -13,7 +14,22 @@ class ApiService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final List<dynamic>movies = jsonDecode(response.body)['results'];
+      final List<dynamic> movies = jsonDecode(response.body)['results'];
+      for (var movie in movies) {
+        movieInstance.add(MovieModel.fromJson(movie));
+      }
+      return movieInstance;
+    }
+    throw Error();
+  }
+
+  static Future<List<MovieModel>> getNowMovies() async {
+    List<MovieModel> movieInstance = [];
+    final url = Uri.parse('$baseUrl/$now');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final List<dynamic> movies = jsonDecode(response.body)['results'];
       for (var movie in movies) {
         movieInstance.add(MovieModel.fromJson(movie));
       }
