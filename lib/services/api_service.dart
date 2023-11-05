@@ -13,7 +13,7 @@ class ApiService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final List<dynamic> movies = jsonDecode(response.body);
+      final List<dynamic>movies = jsonDecode(response.body)['results'];
       for (var movie in movies) {
         movieInstance.add(MovieModel.fromJson(movie));
       }
