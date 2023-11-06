@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mymovieflix/models/movie_model.dart';
-import 'package:mymovieflix/screens/home_screen.dart';
+import 'package:mymovieflix/screens/detail_screen.dart';
 import 'package:mymovieflix/services/api_service.dart';
 
 class PopularMovie extends StatelessWidget {
@@ -67,8 +67,13 @@ class PopularMovie extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                      fullscreenDialog: true,
+                      builder: (context) => DetailScreen(
+                        title: movie.title,
+                        id: movie.id,
+                        poster: movie.poster,
+                        overview: movie.overview,
+                        vote: movie.vote,
+                      ),
                     ),
                   );
                 },
