@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mymovieflix/models/movie_model.dart';
-import 'package:mymovieflix/screens/home_screen.dart';
+import 'package:mymovieflix/screens/detail_screen.dart';
 import 'package:mymovieflix/services/api_service.dart';
 
 class NowMovie extends StatelessWidget {
@@ -67,7 +67,13 @@ class NowMovie extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
+                      builder: (context) => DetailScreen(
+                        title: movie.title,
+                        id: movie.id,
+                        poster: movie.poster,
+                        overview: movie.overview,
+                        vote: movie.vote,
+                      ),
                       fullscreenDialog: true,
                     ),
                   );
@@ -84,9 +90,16 @@ class NowMovie extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(title,
-                        style:
-                            const TextStyle(fontSize: 13, color: Colors.white)),
+                    SizedBox(
+                      width: 100,
+                      child: Center(
+                        child: Text(title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontSize: 13, color: Colors.white)),
+                      ),
+                    ),
                   ],
                 ),
               ),

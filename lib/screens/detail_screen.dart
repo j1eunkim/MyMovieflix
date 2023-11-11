@@ -56,7 +56,7 @@ class DetailScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text("Genre",
+            Text('Genre',
                 style: TextStyle(color: Colors.white.withOpacity(0.7))),
             const SizedBox(
               height: 10,
@@ -80,9 +80,11 @@ class DetailScreen extends StatelessWidget {
                   border: Border.all(color: Colors.white.withOpacity(0.8))),
               child: Text(
                 overview,
-                maxLines: 2,
+                maxLines: 5,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.white.withOpacity(0.8)),
+                style: TextStyle(
+                    color: const Color.fromRGBO(255, 255, 255, 1)
+                        .withOpacity(0.8)),
               ),
             ),
           ],

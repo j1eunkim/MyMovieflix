@@ -85,13 +85,22 @@ class PopularMovie extends StatelessWidget {
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         child: Image.network(
                           posterUrl,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    Text(title,
-                        style:
-                            const TextStyle(fontSize: 13, color: Colors.white)),
+                    SizedBox(
+                      width: 100,
+                      child: Center(
+                        child: Text(
+                          title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 13, color: Colors.white),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
